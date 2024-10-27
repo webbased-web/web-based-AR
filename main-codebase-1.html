@@ -1,0 +1,601 @@
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>/src</strong>: Your main codebase, containing the core functionality (TensorFlow.js, Three.js, etc.)
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				/src
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				&#xa0; <span style="font-family:Arial; color:#c00000">├</span><span style="color:#c00000">── index.html</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="font-family:Arial; color:#c00000">├</span><span style="color:#c00000">── app.js</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="font-family:Arial; color:#c00000">├</span><span style="color:#c00000">── gestureRecognition.js</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">└── arEnvironment.js</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>index.html</strong>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				This file is your entry point, where the 3D AR environment and gesture recognition scripts are linked.
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;!DOCTYPE html&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;html lang="en"&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;head&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;meta charset="UTF-8"&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;title&gt;AR Gesture Control Simulator&lt;/title&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;!-- Link to Three.js from CDN --&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"&gt;&lt;/script&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;!-- Link to TensorFlow.js and Handpose model from CDN --&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0/dist/tf.min.js"&gt;&lt;/script&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"&gt;&lt;/script&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;link rel="stylesheet" href="styles.css"&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;/head&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;body&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;h1&gt;Web AR Gesture Control Simulator&lt;/h1&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;div id="canvas-container"&gt;&lt;/div&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;!-- Your main app script --&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">&lt;script src="app.js"&gt;&lt;/script&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;/body&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;/html&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>app.js</strong>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				This file initializes the application, connects the gesture recognition and AR environment.
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">import { initGestureRecognition } from './gestureRecognition.js';</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">import { initAREnvironment } from './arEnvironment.js';</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">// Initialize both the gesture recognition and AR environment</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">window.onload = function () {</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">initGestureRecognition();</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">initAREnvironment();</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal">
+				<span style="color:#c00000">};</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal; font-size:12pt">
+				<strong><span style="font-family:'Times New Roman'; ">gestureRecognition.js</span></strong>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal; font-size:12pt">
+				<span style="font-family:'Times New Roman'">This file manages the hand tracking and gesture recognition functionality using TensorFlow.js and Media Pipe.</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">import * as handTrack from '@tensorflow-models/handpose';</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">import '@tensorflow/tfjs-backend-webgl';</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">export async function initGestureRecognition() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const video = document.createElement('video');</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">video.setAttribute("autoplay", true);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">video.setAttribute("playsinline", true);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">video.width = 640;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">video.height = 480;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">document.body.appendChild(video);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">// Load the handpose model</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const model = await handTrack.load();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">console.log("HandPose model loaded!");</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">// Start video capture</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">if (navigator.mediaDevices.getUserMedia) {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">navigator.mediaDevices.getUserMedia({ video: true })</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">.then((stream) =&gt; {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">video.srcObject = stream;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">})</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">.catch((error) =&gt; {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.log("Error accessing webcam: ", error);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">});</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">// Function to detect hand gestures</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">async function detectGesture() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">const predictions = await model.estimateHands(video);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">if (predictions.length &gt; 0) {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">const hand = predictions[0];</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.log("Hand detected", hand);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">// Handle recognized gestures (you can add more functionality here)</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">handleGesture(hand);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">requestAnimationFrame(detectGesture);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">detectGesture();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Example function to handle gesture recognition</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">function handleGesture(hand) {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">console.log("Gesture recognized! Hand landmarks:", hand.landmarks);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">// You can add logic here to interact with the AR environment</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				4. <strong>/src/arEnvironment.js</strong>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">import * as THREE from 'three';</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">export function initAREnvironment() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const scene = new THREE.Scene();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const renderer = new THREE.WebGLRenderer();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">renderer.setSize(window.innerWidth, window.innerHeight);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">document. getElementById('canvas-container'). append Child(renderer.domElement);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const geometry = new THREE.BoxGeometry();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const cube = new THREE.Mesh(geometry, material);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">scene.add(cube);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">camera.position.z = 5;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">// Animation loop to rotate the cube</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">function animate() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">requestAnimationFrame(animate);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">cube.rotation.x += 0.01;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">cube.rotation.y += 0.01;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">renderer.render(scene, camera);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">animate();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>/Assets</strong>: Any images, textures, or media files used in the project
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Hand_gesture_icon.svg/2048px-Hand_gesture_icon.svg.png" alt="Project Logo" width="150"&gt;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>/docs</strong>: Additional documentation or design components
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">/docs</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><a href="https://ieeexplore.ieee.org/document/10444445" style="text-decoration:none"><u><span style="color:#c00000">https://ieeexplore.ieee.org/document/10444445</span></u></a>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<a href="https://ieeexplore.ieee.org/document/10444445" style="text-decoration:none"><u><span style="color:#c00000">https://ieeexplore.ieee.org/document/10444445</span></u></a>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<a href="https://www.softkraft.co/web-application-architecture/" style="text-decoration:none"><u><span style="color:#c00000">https://www.softkraft.co/web-application-architecture/</span></u></a>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>/tests</strong>: Testing scripts for the project
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">/tests</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="font-family:Arial">├</span>── testGestureRecognition.js
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// testGestureRecognition.js</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Mock functions to simulate gesture recognition</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">function mockGestureRecognition(input) {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">const gestures = {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">"wave": "Detected a wave gesture",</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">"thumbs_up": "Detected a thumbs up gesture",</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">"point": "Detected a point gesture"</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">};</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">return gestures[input] || "No gesture detected";</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Test Cases</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">function testGestureRecognition() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">const testCases = [</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">{ input: "wave", expected: "Detected a wave gesture" },</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">{ input: "thumbs_up", expected: "Detected a thumbs up gesture" },</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">{ input: "point", expected: "Detected a point gesture" },</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">{ input: "unknown", expected: "No gesture detected" },</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">];</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">testCases.forEach((testCase) =&gt; {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">const result = mockGestureRecognition(testCase.input);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.assert(result === testCase.expected, `Test failed for input: ${testCase.input}. Expected: ${testCase.expected}, but got: ${result}`);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.log(`Test passed for input: ${testCase.input}.`);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">});</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Run Tests</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">testGestureRecognition();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span>└── testAREnvironment.js
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// testAREnvironment.js</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Mock function to simulate AR environment initialization</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">function mockAREnvironment() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">return {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">isInitialized: true,</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">supportsGestures: true,</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">};</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Test Cases</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">function testAREnvironment() {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">const arEnvironment = mockAREnvironment();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.assert(arEnvironment.isInitialized === true, "AR environment should be initialized.");</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.assert(arEnvironment.supportsGestures === true, "AR environment should support gestures.");</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;&#xa0;&#xa0; </span><span style="color:#c00000">console.log("AR Environment Tests Passed.");</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">}</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">// Run Tests</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">testAREnvironment();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal; font-size:12pt">
+				<strong><span style="font-family:'Times New Roman'; ">testGestureRecognition.js</span></strong>
+			</p>
+			<p style="margin-top:14pt; margin-bottom:14pt; line-height:normal; font-size:12pt">
+				<span style="font-family:'Times New Roman'">A basic test script for gesture recognition functionality.</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">import { initGestureRecognition } from '../src/gestureRecognition.js';</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0;</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">test('Check if hand tracking model is loaded', async () =&gt; {</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">const result = await initGestureRecognition();</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">&#xa0; </span><span style="color:#c00000">expect(result).not.toBe(null);</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<span style="color:#c00000">});</span>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>&#xa0;</strong>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt">
+				<strong>/lib</strong>: External libraries or dependencies
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt; line-height:108%; font-size:12pt">
+				<span style="line-height:108%; font-size:11pt; color:#c00000">/</span><span style="font-family:'Times New Roman'; color:#c00000"> </span><span style="font-family:Symbol; color:#c00000"></span><span style="font-family:'Times New Roman'; color:#c00000">&#xa0; </span><strong><span style="font-family:'Times New Roman'; color:#c00000">Three.js</span></strong><span style="font-family:'Times New Roman'; color:#c00000">: </span><a href="https://threejs.org/" target="_new" style="text-decoration:none"><u><span style="font-family:'Times New Roman'; color:#c00000">https://threejs.org/</span></u></a>
+			</p>
+			<p style="margin-top:0pt; margin-bottom:8pt; line-height:108%; font-size:12pt">
+				<span style="font-family:Symbol; color:#c00000"></span><span style="font-family:'Times New Roman'; color:#c00000">&#xa0; </span><strong><span style="font-family:'Times New Roman'; color:#c00000">TensorFlow.js Handpose Model</span></strong><span style="font-family:'Times New Roman'; color:#c00000">: </span><a href="https://github.com/tensorflow/tfjs-models/tree/master/handpose" target="_new" style="text-decoration:none"><u><span style="font-family:'Times New Roman'; color:#c00000">https://github.com/tensorflow/tfjs-models/tree/master/handpose</span></u></a>
+			</p>
+	<p style="bottom: 10px; right: 10px; position: absolute;"><a href="https://wordtohtml.net" target="_blank" style="font-size:11px; color: #d0d0d0">Converted to HTML with WordToHTML.net</a></p>
